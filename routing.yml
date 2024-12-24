@@ -1,9 +1,9 @@
-concerto_api:
-    resource: "@ConcertoAPIBundle/Controller/"
+concerto_panel:
+    resource: "@ConcertoPanelBundle/Controller/"
     type:     annotation
-    
-fos_oauth_server_token:
-    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
 
-fos_oauth_server_authorize:
-    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
+login_check:
+    path: /admin/login_check
+
+logout:
+    path: /admin/logout

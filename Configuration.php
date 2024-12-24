@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\APIBundle\DependencyInjection;
+namespace Concerto\PanelBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -13,12 +13,12 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('api');
+        $rootNode = $treeBuilder->root('concerto_panel');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
