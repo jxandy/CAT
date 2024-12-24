@@ -1,9 +1,4 @@
-concerto_panel:
-    resource: "@ConcertoPanelBundle/Controller/"
+concerto_test:
+    resource: "@ConcertoTestBundle/Controller/"
     type:     annotation
-
-login_check:
-    path: /admin/login_check
-
-logout:
-    path: /admin/logout
+    
