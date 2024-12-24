@@ -1,0 +1,33 @@
+imports:
+    - { resource: config_dev.yml }
+
+parameters:
+    secret: secret
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        enabled: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection: local
+        connections:
+            local:
+                driver:   "%database_driver%"
+                host:     "%env(DB_TEST_HOST)%"
+                port:     "%env(DB_TEST_PORT)%"
+                dbname:   "%env(DB_TEST_NAME)%"
+                user:     "%env(DB_TEST_USER)%"
+                password: "%env(DB_TEST_PASSWORD)%"
+                charset:  UTF8
+                # if using pdo_sqlite as your database driver, add the path in parameters.yml
+                # e.g. database_path: %kernel.root_dir%/data/data.db3
+                # path:     %database_path%

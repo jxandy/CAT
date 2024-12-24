@@ -1,0 +1,49 @@
+security:
+    encoders:
+        Concerto\PanelBundle\Entity\User: 
+          algorithm: sha1
+          encode_as_base64: false
+          iterations: 1
+
+    providers:
+        users:
+          entity: { class: ConcertoPanelBundle:User, property: username }
+
+    firewalls:
+        admin_area:
+          pattern: ^/admin
+          logout_on_user_change: true
+          form_login: 
+            login_path: login
+            check_path: login_check
+            default_target_path: index
+          logout:
+            path: /admin/logout
+            target: /admin
+          two_factor:
+            auth_form_path: 2fa_login
+            check_path: 2fa_login_check
+            
+        oauth_token:
+          pattern:    ^/oauth/v2/token
+          logout_on_user_change: true
+          security:   false
+
+        api:
+          pattern:    ^/api(/data|/runner)
+          logout_on_user_change: true
+          fos_oauth:  true
+          stateless:  true
+          anonymous:  false
+
+        open_api:
+          pattern:    ^/api(/check|/saml)
+          logout_on_user_change: true
+          fos_oauth:  true
+          stateless:  true
+          anonymous:  true
+
+    access_control:
+        - { path: ^/admin/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
+        - { path: ^/admin, roles: [ IS_AUTHENTICATED_FULLY ] }
+        - { path: ^/api(/data|/runner), roles: [ IS_AUTHENTICATED_FULLY ] }
